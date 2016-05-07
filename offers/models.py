@@ -8,11 +8,18 @@ from shops.models import Shop
 
 
 class Offer(TimeStampedModel):
+    categories = {
+        0: 'Tech',
+        1: 'Food',
+        2: 'Lifestyle'
+    }
+
     shop = models.ForeignKey(Shop, related_name="offers")
     name = models.CharField(max_length=300)
     expiration = models.DateTimeField()
     count = models.IntegerField(default=0)
     description = models.TextField(null=True)
+    category = models.IntegerField(default=0)
 
     def __str__(self):
         return self.name
