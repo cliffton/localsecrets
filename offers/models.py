@@ -20,6 +20,7 @@ class Offer(TimeStampedModel):
     count = models.IntegerField(default=0)
     description = models.TextField(null=True)
     category = models.IntegerField(default=0)
+    tnc = models.TextField(null=True)
 
     def __str__(self):
         return self.name
