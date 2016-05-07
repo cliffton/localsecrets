@@ -59,5 +59,5 @@ class UserRegisterView(viewsets.ViewSet):
         except KeyError:
             raise serializers.ValidationError({"Invalid JSON": "Blah"})
 
-    def get_serializer(self, *args, **kwargs):
-        return super(UserRegisterView, self).get_serializer(*args, **kwargs)
+    # def get_serializer(self, *args, **kwargs):
+    #     return super(UserRegisterView, self).get_serializer(*args, **kwargs)
