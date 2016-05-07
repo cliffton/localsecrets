@@ -10,6 +10,7 @@ from rest_framework import status
 from rest_framework import viewsets
 from rest_framework.response import Response
 from math import radians, cos, sin, asin, sqrt
+from accounts.models import User
 
 
 def haversine(lon1, lat1, lon2, lat2):
@@ -35,13 +36,13 @@ class OfferViewSet(viewsets.ModelViewSet):
     queryset = Offer.objects.all()
     serializer_class = OfferSerializer
 
-    # def get_queryset(self):
-    #     queryset = Offer.objects.all()
-    #     import pdb; pdb.set_trace()
-    #     offer_id = self.request.query_params.get('offer',None)
-    #     if offer_id:
-    #         queryset.filter(offer__id=offer_id)
-    #     return queryset
+    def get_queryset(self):
+        queryset = Offer.objects.all()
+        email = self.request.query_params.get('email', None)
+        # user = User.objects.get(email=email)
+        if email:
+            queryset = queryset.filter(shop__user__email=email)
+        return queryset
 
 
 class OfferHistoryViewSet(viewsets.ModelViewSet):
