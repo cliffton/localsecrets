@@ -17,7 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 # from accounts import urls as accounts_urls
 from utils.routers import SharedAPIRootRouter
-
+# from accounts import urls as accounts_urls
 
 def api_urls():
     """
@@ -39,6 +39,7 @@ def api_urls():
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    # url(r'^api/v1/user/register/', include(accounts_urls)),
     url(r'^api/v1/', include(api_urls())),
 ]
 

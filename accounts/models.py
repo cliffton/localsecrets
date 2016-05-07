@@ -9,7 +9,9 @@ from django.contrib.auth.models import User
 
 class Customer(TimeStampedModel):
     user = models.ForeignKey(User, related_name="customer")
-    contact_number = models.CharField(max_length=10)
+    contact_number = models.CharField(max_length=10, null=True)
+    age = models.IntegerField(null=True)
+    gender = models.CharField(null=True, max_length=20)
 
     def __str__(self):
         return self.user.get_full_name()
