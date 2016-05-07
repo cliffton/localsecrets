@@ -7,7 +7,7 @@ router.register(r'offer', views.OfferViewSet)
 router.register(r'offerhistory', views.OfferHistoryViewSet)
 router.register(r'offerreview', views.OfferReviewViewSet)
 router.register(r'nearestoffer', views.NearestOffer)
-
+router.register(r'offerdata', views.OfferData)
 
 # near_offer = views.NearestOffer.as_view({
 #     'get': 'list',

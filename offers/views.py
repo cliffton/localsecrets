@@ -89,3 +89,25 @@ class NearestOffer(viewsets.ViewSet):
         return Response(
             offers,
             status=status.HTTP_200_OK)
+
+
+class OfferData(viewsets.ViewSet):
+    queryset = Offer.objects.all()
+    # serializer_class = OfferSerializer
+
+    def retrieve(self, request, pk=None):
+        if pk:
+            offer = Offer.objects.get(pk=pk)
+            total = offer.offer_reviews.all().count()
+            positive = offer.offer_reviews.filter(sentiment="positive").count()
+            negative = offer.offer_reviews.filter(sentiment="negative").count()
+            neutral = offer.offer_reviews.filter(sentiment="neutral").count()
+            response = {
+                "positive": (float(positive) / total) * 100,
+                "negative": (float(negative) / total) * 100,
+                "neutral": (float(neutral) / total) * 100,
+            }
+
+        return Response(
+            response,
+            status=status.HTTP_200_OK)
