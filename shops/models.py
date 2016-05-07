@@ -11,6 +11,7 @@ class Shop(TimeStampedModel):
     name = models.CharField(max_length=300)
     latitude = models.DecimalField(max_digits=12, decimal_places=8, null=True)
     longitude = models.DecimalField(max_digits=12, decimal_places=8, null=True)
+    category = models.IntegerField(default=0)
 
     def __str__(self):
         return self.name
