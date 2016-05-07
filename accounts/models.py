@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from model_utils.models import TimeStampedModel
-from django.contrib.models import User
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -10,6 +10,9 @@ from django.contrib.models import User
 class Customer(TimeStampedModel):
     user = models.ForeignKey(User, related_name="customer")
     contact_number = models.CharField(max_length=10)
+
+    def __str__(self):
+        return self.user.get_full_name()
 
 
 class Vendor(TimeStampedModel):
