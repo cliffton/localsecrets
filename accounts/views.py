@@ -19,7 +19,7 @@ class CustomerViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.
     """
-    queryset = Customer.objects.all().order_by('-date_joined')
+    queryset = Customer.objects.all()
     serializer_class = CustomerSerializer
 
 
@@ -27,5 +27,5 @@ class VendorViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.
     """
-    queryset = Vendor.objects.all().order_by('-date_joined')
+    queryset = Vendor.objects.all()
     serializer_class = VendorSerializer

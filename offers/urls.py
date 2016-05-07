@@ -3,6 +3,6 @@ from utils.routers import SharedAPIRootRouter
 router = SharedAPIRootRouter()
 
 
-router.register(r'Offer', views.OfferViewSet)
-router.register(r'OfferHistory', views.OfferHistoryViewSet)
-router.register(r'OfferReview', views.OfferReviewViewSet)
+router.register(r'offer', views.OfferViewSet)
+router.register(r'offerhistory', views.OfferHistoryViewSet)
+router.register(r'offerreview', views.OfferReviewViewSet)
