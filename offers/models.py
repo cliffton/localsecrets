@@ -24,7 +24,7 @@ class Offer(TimeStampedModel):
     tnc = models.TextField(null=True)
 
     def __str__(self):
-        return self.name
+        return "%s - %s" % (self.shop.name, self.name)
 
 
 class OfferHistory(TimeStampedModel):
