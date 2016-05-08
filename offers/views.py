@@ -101,14 +101,22 @@ class OfferData(viewsets.ViewSet):
         if pk:
             offer = Offer.objects.get(pk=pk)
             total = offer.offer_reviews.all().count()
-            positive = offer.offer_reviews.filter(sentiment="positive").count()
-            negative = offer.offer_reviews.filter(sentiment="negative").count()
-            neutral = offer.offer_reviews.filter(sentiment="neutral").count()
-            response = {
-                "positive": (float(positive) / total) * 100,
-                "negative": (float(negative) / total) * 100,
-                "neutral": (float(neutral) / total) * 100,
-            }
+            if not total == 0:
+                positive = offer.offer_reviews.filter(sentiment="positive").count()
+                negative = offer.offer_reviews.filter(sentiment="negative").count()
+                neutral = offer.offer_reviews.filter(sentiment="neutral").count()
+                response = {
+                    "positive": (float(positive) / total) * 100,
+                    "negative": (float(negative) / total) * 100,
+                    "neutral": (float(neutral) / total) * 100,
+                }
+            else:
+                response = {
+                    "positive": float(0),
+                    "negative": float(0),
+                    "neutral": float(0),
+                }
+
 
         return Response(
             response,
