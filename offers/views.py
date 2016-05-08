@@ -6,6 +6,7 @@ from offers.serializers import (
     OfferHistorySerializer,
     OfferReviewSerializer
 )
+from shops.serializers import ShopSerializer
 from rest_framework import status
 from rest_framework import viewsets
 from rest_framework.response import Response
@@ -84,6 +85,7 @@ class NearestOffer(viewsets.ViewSet):
                 distance = haversine(ulat, ulon, olat, olon)
                 offer_data = OfferSerializer(offer).data
                 offer_data['distace'] = float(distance)
+                offer_data['shop'] = ShopSerializer(offer.shop).data
                 offers.append(offer_data)
 
         return Response(
