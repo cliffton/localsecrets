@@ -3,6 +3,8 @@ from offers.models import Offer, OfferHistory, OfferReview
 
 
 class OfferSerializer(serializers.ModelSerializer):
+    expiration = serializers.DateTimeField(format="%d %b %Y %I %p")
+
     class Meta:
         model = Offer
 
