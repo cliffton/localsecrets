@@ -1,0 +1,10 @@
+name,category,sentiment,rating,year
+RICH_TEXT,RICH_TEXT,RICH_TEXT,DOUBLE,INTEGER
+free,tech,positive,9.3,1994
+err,food,negative,8.3,1998
+discount,life,positive,1.3,1994
+drinks,food,negative,5.4,1998
+mayer,tech,positive,7.8,1994
+mayer,tech,negative,2.9,1997
+free,tech,positive,3.3,1994
+free,life,negative,4.3,1999
