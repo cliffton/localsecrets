@@ -60,7 +60,7 @@ class OfferReview(TimeStampedModel):
         return response['aggregate']
 
     def save(self, *args, **kwargs):
-        if self.pk:
+        if True:
             try:
                 data = self.get_sentiment()
                 self.sentiment = data['sentiment']
