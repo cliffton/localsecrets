@@ -47,10 +47,13 @@ class UserRegisterView(viewsets.ViewSet):
                 'username': request.data['name'],
                 'email': request.data['email']
             }
-            user = User(**data)
-            user.save()
-            customer = Customer(user=user, age=request.data['age'], gender=request.data['gender'])
-            customer.save()
+            try:
+                user = User.objects.get(email=data['email'])
+            except Exception, e:
+                user = User(**data)
+                user.save()
+                customer = Customer(user=user, age=request.data['age'], gender=request.data['gender'])
+                customer.save()
             response = UserSerializer(user).data
 
             return Response(
